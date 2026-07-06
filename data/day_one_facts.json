@@ -1,0 +1,23 @@
+{
+  "_comment": "Seed data for Tool 1 (answer_day_one_logistics). Replace/expand with real pilot-team facts. Each entry MUST have a 'source' for citation.",
+  "facts": [
+    {
+      "topic": "okta_setup",
+      "question_examples": ["How do I set up Okta?", "SSO login"],
+      "answer": "TODO: describe Okta/SSO first-time setup for new hires.",
+      "source": "TODO: link to the canonical Okta setup page"
+    },
+    {
+      "topic": "benefits",
+      "question_examples": ["Where do I find my benefits?"],
+      "answer": "TODO: where to find benefits enrollment and info.",
+      "source": "TODO: benefits portal / HR page link"
+    },
+    {
+      "topic": "laptop_support",
+      "question_examples": ["My laptop has an issue", "IT support"],
+      "answer": "TODO: how to get IT/laptop support.",
+      "source": "TODO: IT help desk link"
+    }
+  ]
+}

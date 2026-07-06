@@ -1,0 +1,20 @@
+# Core agent / orchestration
+langgraph
+langchain
+langchain-core
+
+# LLM providers (install both; pick one at runtime via LLM_PROVIDER)
+langchain-openai
+langchain-anthropic
+
+# Slack (bot interface + web API for history search)
+slack-bolt
+slack-sdk
+
+# Confluence + HTML cleaning (Tool 3)
+atlassian-python-api
+requests
+beautifulsoup4
+
+# Config
+python-dotenv

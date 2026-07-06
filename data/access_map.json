@@ -1,0 +1,29 @@
+{
+  "_comment": "Seed data for Tool 2 (get_access_instructions). Map a system name to the exact provisioning instruction (X-Bot command or ServiceNow link). Fill with real pilot-team workflows.",
+  "systems": [
+    {
+      "system": "UBVM",
+      "aliases": ["ubvm", "dev vm"],
+      "instructions": "TODO: e.g. `@X-Bot request UBVM`",
+      "type": "x-bot"
+    },
+    {
+      "system": "Cursor IDE",
+      "aliases": ["cursor", "cursor ide"],
+      "instructions": "TODO: e.g. `@X-Bot request access to Cursor`",
+      "type": "x-bot"
+    },
+    {
+      "system": "GitHub repo access",
+      "aliases": ["github", "repo access"],
+      "instructions": "TODO: ServiceNow URL for GitHub repo access",
+      "type": "servicenow"
+    },
+    {
+      "system": "Daily cluster",
+      "aliases": ["daily cluster", "cluster"],
+      "instructions": "TODO: how the pilot team requests cluster access",
+      "type": "x-bot"
+    }
+  ]
+}
