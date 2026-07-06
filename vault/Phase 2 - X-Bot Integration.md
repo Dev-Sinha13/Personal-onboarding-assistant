@@ -9,17 +9,22 @@ status: not-started
 **Goal:** Teach the bot how Nutanix provisions access so it can guide the user.
 
 ## Tasks
-- [ ] **Map access workflows** — document the exact commands the pilot team uses, e.g.:
-  - `@X-Bot request UBVM`
-  - `@X-Bot request access to Cursor`
-  - ServiceNow URL for GitHub repo access
-- [ ] **Build [[Tool 2 - get_access_instructions]]** — takes a system name, returns exact provisioning instructions.
-- [ ] **CLI test** — agent answers *"How do I get access to the daily cluster?"* by instructing the user to use X-Bot.
+- [x] **Map access workflows** — real IAM commands in `data/access_map.json` (Cursor, UBVM, Confluence/Jira via X-Bot; GitHub via Canaveral).
+- [x] **Build [[Tool 2 - get_access_instructions]]** — `tools/access.py`; name/alias matching → exact instruction (+ link). Graceful fallback to #iam-help for unknown systems.
+- [x] **Register** in `ALL_TOOLS`.
+- [x] **CLI test** — access Qs route to Tool 2 and return the exact command; fact Qs still route to Tool 1.
 
-## Exit Criteria
-Agent maps a system-access question to Tool 2 and returns a copy-pasteable `@X-Bot` command or ServiceNow link.
+## Status — ✅ COMPLETE
+Live-tested against Ollama `qwen2.5:7b`:
+- "How do I get access to Cursor?" → `@X-Bot request access to Cursor`
+- "...daily cluster?" → placeholder guidance (see below)
+- "Where do I find my benefits?" → still Tool 1 (routing intact)
 
-> [!question] Needs input
-> The exact X-Bot commands / ServiceNow URLs for the pilot team need to be gathered. See [[Open Questions]].
+## Exit Criteria — met
+Agent maps a system-access question to Tool 2 and returns a copy-pasteable `@X-Bot` command / link. ✅
+
+> [!warning] Open data gap
+> **Daily/dev cluster** access command is a **placeholder** (`todo: true` in access_map.json).
+> Confirm the exact command with the IAM team and replace it.
 
 Related: [[Phase 1 - Foundation & Day 1 Skills]] · [[Phase 3 - RAG for Tribal Knowledge]] · [[🏠 Home]]

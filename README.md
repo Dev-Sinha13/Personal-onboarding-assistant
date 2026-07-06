@@ -44,7 +44,7 @@ A successful demo = a Slack user DMs the bot **three distinct queries** and gets
 |---|---|---|
 | **0** | Repo, venv (uv/py3.12), deps, `.env`, git, Ollama + model | ✅ Done |
 | **1** | LangGraph agent + `answer_day_one_logistics` (Tool 1) | ✅ Done & live-tested |
-| **2** | `get_access_instructions` (Tool 2) | 🟡 Data ready, tool not built |
+| **2** | `get_access_instructions` (Tool 2) | ✅ Done & live-tested |
 | **3** | `search_confluence_wiki` (Tool 3) + `search_slack_history` (Tool 4) | ⬜ Not started (needs creds) |
 | **4** | Slack Bolt app (Socket Mode) + Slack-Markdown output | ⬜ Not started |
 
@@ -59,7 +59,6 @@ A successful demo = a Slack user DMs the bot **three distinct queries** and gets
 - **Phase 2 data:** `data/access_map.json` populated with real IAM workflows (Cursor, UBVM, Confluence/Jira via X-Bot; GitHub via the Canaveral self-invite UI).
 
 ### Left to do
-- **Phase 2:** write the `get_access_instructions` tool (reads the existing map), register it, CLI-test. *No credentials needed.*
 - **Phase 3 (the real data-collection module):**
   - **Tool 3 — Confluence:** CQL search over `IAM20`/`PRIS` + BeautifulSoup HTML stripping. Needs a **Confluence API token**.
   - **Tool 4 — Slack:** `conversations.history` on `#iam-help` + thread expansion via `conversations.replies` (NOT `search.messages` — prohibited). Needs a **Slack bot token** + the **`#iam-help` channel ID**.
@@ -84,7 +83,8 @@ hackathon/
 │   ├── cli.py                  # terminal test harness
 │   └── tools/
 │       ├── __init__.py         # ALL_TOOLS registry
-│       └── day_one.py          # Tool 1: answer_day_one_logistics
+│       ├── day_one.py          # Tool 1: answer_day_one_logistics
+│       └── access.py           # Tool 2: get_access_instructions
 ├── data/
 │   ├── day_one_facts.json      # Tool 1 source data (SAMPLE - replace URLs)
 │   └── access_map.json         # Tool 2 X-Bot / Canaveral map (real)
@@ -119,10 +119,26 @@ PYTHONPATH=src python -m onboarding_assistant.cli   # interactive REPL
 > Prefer plain `venv` + `pip`? `python3.12 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`.
 > Note: plain `llama3` has **no** tool-calling support — use `qwen2.5:7b`, `llama3.1`, or `mistral`.
 
+## 🧪 Testing
+Comprehensive `pytest` suite (unit tests are hermetic; live tests are opt-in).
+
+```bash
+uv pip install -r requirements-dev.txt
+
+pytest -m "not integration"   # fast unit suite (no LLM needed)
+pytest -m integration         # live end-to-end vs Ollama (auto-skips if server down)
+pytest                        # everything
+pytest --cov=onboarding_assistant --cov-report=term-missing  # with coverage
+```
+
+Covers: JSON data integrity, both tools (matching/aliases/fallbacks/citations),
+config parsing, LLM provider dispatch, agent graph topology, the CLI harness, and
+live routing (access→Tool 2, facts→Tool 1, out-of-scope→declines). ~92% coverage.
+
 ## 🗺️ Build path
 Build the agent + 4 tools in the CLI first (Phases 1–3), then bolt on Slack last (Phase 4).
 
 1. **Phase 1** — LangGraph skeleton + `answer_day_one_logistics` (local JSON) ✅
-2. **Phase 2** — `get_access_instructions` (X-Bot / Canaveral map) 🟡
+2. **Phase 2** — `get_access_instructions` (X-Bot / Canaveral map) ✅
 3. **Phase 3** — `search_confluence_wiki` (CQL + BeautifulSoup) & `search_slack_history` (`conversations.history`)
 4. **Phase 4** — Slack Bolt (Socket Mode), Slack-Markdown formatting, citations

@@ -20,6 +20,9 @@ env/
 .ruff_cache/
 .mypy_cache/
 .ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
 
 # OS
 .DS_Store

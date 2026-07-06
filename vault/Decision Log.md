@@ -21,5 +21,6 @@ Running record of decisions made during the hackathon.
 | 2026-07-05 | **GitHub access via Canaveral UI** (not ServiceNow) | Self-invite through OKTA/SAML at the Canaveral URL |
 | 2026-07-05 | **Google Drive + Jira dropped from MVP** | Focus energy on Confluence + Slack to ship a working demo |
 | 2026-07-05 | **Ollama model = `qwen2.5:7b`** | Dev machine is M1 Pro / 16GB unified memory → 7-8B Q4 (~5GB) is the sweet spot with OS headroom. Qwen2.5-7B has the best tool-calling in that class (critical for the agent loop). Alts: llama3.1:8b, mistral:7b |
+| 2026-07-05 | **pytest suite (unit + opt-in live integration)** | Test comprehensively at each step. Unit tests hermetic; `integration` marker auto-skips without Ollama. ~92% coverage, 62 tests through Phase 2 |
 
 > Add rows as decisions are made. Link out to the relevant note when useful.

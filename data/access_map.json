@@ -25,6 +25,13 @@
       "instructions": "There is no ServiceNow ticket for this. Set up your GitHub account via OKTA/SAML, then self-invite through the Canaveral UI: https://canaveral-ui.corp.p10y.ntnxdpro.com/#/account/github (e.g. to join orgs like nutanix-core).",
       "type": "self-service",
       "url": "https://canaveral-ui.corp.p10y.ntnxdpro.com/#/account/github"
+    },
+    {
+      "system": "Dev / daily cluster",
+      "aliases": ["daily cluster", "dev cluster", "cluster", "test cluster"],
+      "instructions": "TODO (confirm exact command). For a dev VM you typically start with `@X-Bot request UBVM`; for cluster-specific access, ask in #iam-help.",
+      "type": "x-bot",
+      "todo": true
     }
   ]
 }
