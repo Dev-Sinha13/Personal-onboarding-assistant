@@ -8,15 +8,16 @@ tags: [hackathon, setup]
 > Keep actual keys in a local `.env` (gitignored). This note tracks **what** is needed and where it goes, not the secret values themselves.
 
 ## Required credentials / config
-| Item | Env var (suggested) | Status |
+| Item | Env var | Status |
 |---|---|---|
-| LLM API key | `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` | ❓ |
-| Slack bot token | `SLACK_BOT_TOKEN` | ❓ |
+| LLM (local Ollama) | `OLLAMA_BASE_URL` / `LLM_MODEL` | ✅ default set (`http://localhost:11434`, `llama3`) — needs Ollama installed locally |
+| Slack bot token | `SLACK_BOT_TOKEN` | ❓ create app in sandbox |
 | Slack app token (Socket Mode) | `SLACK_APP_TOKEN` | ❓ |
-| Slack user token (`search:read`) | `SLACK_USER_TOKEN` | ❓ |
-| Confluence base URL | `CONFLUENCE_BASE_URL` | ❓ |
-| Confluence API token | `CONFLUENCE_API_TOKEN` | ❓ |
-| Confluence space key | `CONFLUENCE_SPACE_KEY` | ❓ |
+| ~~Slack user token~~ | — | ⛔ NOT used (`search:read` prohibited) |
+| Confluence base URL | `CONFLUENCE_BASE_URL` | ✅ `https://confluence.eng.nutanix.com:8443` |
+| Confluence space keys | `CONFLUENCE_SPACE_KEYS` | ✅ `IAM20,PRIS` |
+| Confluence API token | `CONFLUENCE_API_TOKEN` | ❓ personal PAT |
+| Help channel | `SLACK_HELP_CHANNEL_NAME` / `_ID` | ✅ `#iam-help` / ❓ id (`C…`) |
 
 ## Local dev — DONE (Phase 0 scaffolding)
 - Python version: **3.12.13** (via `uv`)

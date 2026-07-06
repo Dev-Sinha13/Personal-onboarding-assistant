@@ -1,23 +1,41 @@
 {
-  "_comment": "Seed data for Tool 1 (answer_day_one_logistics). Replace/expand with real pilot-team facts. Each entry MUST have a 'source' for citation.",
+  "_comment": "Seed data for Tool 1 (answer_day_one_logistics). SAMPLE content - replace answers/sources with the real Nutanix links for your pilot team. Every entry MUST keep a 'source' so the agent can cite it.",
   "facts": [
     {
-      "topic": "okta_setup",
-      "question_examples": ["How do I set up Okta?", "SSO login"],
-      "answer": "TODO: describe Okta/SSO first-time setup for new hires.",
-      "source": "TODO: link to the canonical Okta setup page"
+      "topic": "benefits",
+      "question_examples": ["Where do I find my benefits?", "health insurance", "401k", "enroll benefits"],
+      "answer": "Benefits enrollment is handled in Workday. New hires typically have 30 days from their start date to enroll. Look under the 'Benefits' worklet in Workday.",
+      "source": "Workday Benefits (replace with real URL)"
     },
     {
-      "topic": "benefits",
-      "question_examples": ["Where do I find my benefits?"],
-      "answer": "TODO: where to find benefits enrollment and info.",
-      "source": "TODO: benefits portal / HR page link"
+      "topic": "okta_setup",
+      "question_examples": ["How do I set up Okta?", "SSO login", "single sign on", "MFA"],
+      "answer": "Okta is the SSO gateway for Nutanix apps. Activate your account from the welcome email, set your password, and enroll at least one MFA factor (Okta Verify recommended). Most internal tools are then available on your Okta dashboard.",
+      "source": "IT Okta Setup Guide (replace with real URL)"
     },
     {
       "topic": "laptop_support",
-      "question_examples": ["My laptop has an issue", "IT support"],
-      "answer": "TODO: how to get IT/laptop support.",
-      "source": "TODO: IT help desk link"
+      "question_examples": ["My laptop has an issue", "IT support", "help desk", "broken laptop"],
+      "answer": "For hardware or software issues, contact the IT Help Desk / open a ticket in the IT service portal. For urgent Day-1 setup issues, use the #it-help Slack channel.",
+      "source": "IT Help Desk (replace with real URL)"
+    },
+    {
+      "topic": "vpn",
+      "question_examples": ["How do I connect to VPN?", "remote access", "vpn setup"],
+      "answer": "Install the corporate VPN client from the IT software portal and authenticate via Okta SSO. VPN is required to reach many internal services (including Confluence and Jira) when off the corporate network.",
+      "source": "IT VPN Guide (replace with real URL)"
+    },
+    {
+      "topic": "payroll",
+      "question_examples": ["When do I get paid?", "payroll", "direct deposit", "pay schedule"],
+      "answer": "Set up direct deposit and view pay statements in Workday under 'Pay'. Payroll questions go to the HR/People team.",
+      "source": "Workday Pay (replace with real URL)"
+    },
+    {
+      "topic": "first_day",
+      "question_examples": ["What do I do on my first day?", "day one checklist", "getting started"],
+      "answer": "Day 1: activate Okta + MFA, set up your laptop, connect to VPN, log into Slack and Workday, complete mandatory HR/security training, and introduce yourself in your team channel. Then ask this bot what access to request and what to read.",
+      "source": "New Hire Day 1 Checklist (replace with real URL)"
     }
   ]
 }

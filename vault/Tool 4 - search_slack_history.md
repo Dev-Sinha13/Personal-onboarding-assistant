@@ -6,22 +6,28 @@ data-source: slack
 
 # Tool 4 — `search_slack_history`
 
-**Data source:** Slack (`search.messages` API).
+**Data source:** Slack `conversations.history` (+ `conversations.replies`).
 
-**Purpose:** Query past conversations in the team's help channel for historical Q&A / tribal knowledge.
+**Purpose:** Query past conversations in `#iam-help` for historical Q&A / tribal knowledge.
+
+> [!warning] Do NOT use `search.messages`
+> `search:read` is a **prohibited high-risk scope** at Nutanix and will be rejected.
+> Use a **Bot Token** with **`channels:history`** and call **`conversations.history`**
+> on the specific channel, then expand matches with **`conversations.replies`**.
 
 ## Key requirements
-- Scope to the pilot team's **help channel**.
+- Scope to `#iam-help` (need the channel id `C…`).
+- Pull message + full thread so the LLM sees the actual answer, not just the question.
 - Return message **permalink** for citations.
-- Summarize threads rather than dumping raw messages.
+- Keyword-match / rank locally over recent history (no server-side search API).
 
 ## Signature (draft)
 ```python
 def search_slack_history(query: str) -> list[dict]:
-    """search.messages in the team help channel; return text + permalinks."""
+    """conversations.history on #iam-help; expand threads; return text + permalinks."""
 ```
 
 ## Open items
-- Slack scopes needed: `search:read` (user token) — note `search.messages` requires a **user token**, not a bot token. See [[Open Questions]].
+- `SLACK_BOT_TOKEN` with `channels:history`; `#iam-help` channel id. See [[Open Questions]].
 
 Related: [[Phase 3 - RAG for Tribal Knowledge]]

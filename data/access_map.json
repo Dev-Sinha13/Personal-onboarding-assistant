@@ -1,29 +1,30 @@
 {
-  "_comment": "Seed data for Tool 2 (get_access_instructions). Map a system name to the exact provisioning instruction (X-Bot command or ServiceNow link). Fill with real pilot-team workflows.",
+  "_comment": "Tool 2 (get_access_instructions) source data for the Nutanix IAM pilot. Maps a system to the exact provisioning instruction. X-Bot is a Slack app; our bot INSTRUCTS the user (no automated provisioning).",
   "systems": [
     {
-      "system": "UBVM",
-      "aliases": ["ubvm", "dev vm"],
-      "instructions": "TODO: e.g. `@X-Bot request UBVM`",
+      "system": "Cursor IDE",
+      "aliases": ["cursor", "cursor ide", "ide"],
+      "instructions": "In Slack, type: `@X-Bot request access to Cursor`",
       "type": "x-bot"
     },
     {
-      "system": "Cursor IDE",
-      "aliases": ["cursor", "cursor ide"],
-      "instructions": "TODO: e.g. `@X-Bot request access to Cursor`",
+      "system": "UBVM",
+      "aliases": ["ubvm", "dev vm", "new vm"],
+      "instructions": "In Slack, type: `@X-Bot request UBVM` (or say \"I want a new UBVM\").",
+      "type": "x-bot"
+    },
+    {
+      "system": "Confluence / Jira",
+      "aliases": ["confluence", "jira", "wiki access"],
+      "instructions": "In Slack, ask X-Bot: `get Confluence/Jira`",
       "type": "x-bot"
     },
     {
       "system": "GitHub repo access",
-      "aliases": ["github", "repo access"],
-      "instructions": "TODO: ServiceNow URL for GitHub repo access",
-      "type": "servicenow"
-    },
-    {
-      "system": "Daily cluster",
-      "aliases": ["daily cluster", "cluster"],
-      "instructions": "TODO: how the pilot team requests cluster access",
-      "type": "x-bot"
+      "aliases": ["github", "repo access", "git"],
+      "instructions": "There is no ServiceNow ticket for this. Set up your GitHub account via OKTA/SAML, then self-invite through the Canaveral UI: https://canaveral-ui.corp.p10y.ntnxdpro.com/#/account/github (e.g. to join orgs like nutanix-core).",
+      "type": "self-service",
+      "url": "https://canaveral-ui.corp.p10y.ntnxdpro.com/#/account/github"
     }
   ]
 }

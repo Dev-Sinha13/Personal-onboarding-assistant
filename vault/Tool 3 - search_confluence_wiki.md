@@ -11,17 +11,18 @@ data-source: confluence
 **Purpose:** Retrieve team architecture docs & setup guides from the pilot team's space.
 
 ## Key requirements
-- Scope search to the **pilot team's Confluence space**.
+- Scope to IAM spaces via CQL: `space in ("IAM20","PRIS") and text ~ "{query}"`.
+- Base URL: `https://confluence.eng.nutanix.com:8443` (endpoint `/rest/api/content/search`).
 - **HTML stripper** (BeautifulSoup) → feed the LLM clean text only.
 - Return page **URL + title** for citations.
 
 ## Signature (draft)
 ```python
 def search_confluence_wiki(query: str) -> list[dict]:
-    """CQL search the pilot team's space; return clean text + source URLs."""
+    """CQL search the IAM spaces (IAM20, PRIS); return clean text + source URLs."""
 ```
 
 ## Open items
-- Confluence base URL, space key, auth token → see [[Setup & Credentials]] / [[Open Questions]].
+- Confluence API token (PAT) + username → see [[Setup & Credentials]] / [[Open Questions]].
 
 Related: [[Phase 3 - RAG for Tribal Knowledge]]

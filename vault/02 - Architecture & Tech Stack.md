@@ -9,13 +9,13 @@ tags: [hackathon, architecture]
 |---|---|
 | **Interface** | Slack App (Slack Bolt for Python, Socket Mode) |
 | **Orchestration** | LangGraph / LangChain — agentic loop + tool routing |
-| **LLM** | OpenAI / Anthropic (whichever approved model is available) |
+| **LLM** | **Local Ollama** (`llama3`/`mistral`) — NAI Gateway unavailable this cycle |
 
 ## Data Sources (a.k.a. the "Tools")
 - **Local JSON / static vector DB** — standard Day 1 HR/IT logistics + hardcoded X-Bot access commands → [[Tool 1 - answer_day_one_logistics]], [[Tool 2 - get_access_instructions]]
-- **Confluence API** — team architecture docs & setup guides → [[Tool 3 - search_confluence_wiki]]
-- **Slack API (`channels:history` / `search.messages`)** — team help channels, historical Q&A, tribal knowledge → [[Tool 4 - search_slack_history]]
-- **(Stretch) Google Drive / Jira APIs** — project status or specific folder links
+- **Confluence API** — IAM spaces `IAM20`/`PRIS` architecture docs & setup guides → [[Tool 3 - search_confluence_wiki]]
+- **Slack API (`channels:history` → `conversations.history`)** — `#iam-help` historical Q&A, tribal knowledge → [[Tool 4 - search_slack_history]]
+- ~~Google Drive / Jira~~ — **dropped from MVP** to keep the POC shippable
 
 ## High-Level Flow
 ```

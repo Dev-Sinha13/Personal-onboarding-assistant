@@ -3,7 +3,9 @@ langgraph
 langchain
 langchain-core
 
-# LLM providers (install both; pick one at runtime via LLM_PROVIDER)
+# LLM providers (pick one at runtime via LLM_PROVIDER)
+# Default is local Ollama; hosted providers kept as optional fallbacks.
+langchain-ollama
 langchain-openai
 langchain-anthropic
 
